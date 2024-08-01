@@ -18,6 +18,8 @@
         }
         .container {
             text-align: center;
+            width: 80%; /* Adjust this value as needed */
+            max-width: 1200px; /* Set a maximum width if desired */
         }
         .header {
             font-size: 48px;
@@ -29,12 +31,12 @@
             font-size: 18px;
         }
         .rotating-text-container {
-            height: 60px; /* Increased height to accommodate two lines */
+            height: 40px;
             overflow: hidden;
             position: relative;
             width: 100%;
-            max-width: 600px;
-            margin: 0 auto;
+            margin-top: 20px;
+            text-align: center;
         }
         .rotating-text {
             font-size: 24px;
@@ -43,69 +45,71 @@
             width: 100%;
             height: 100%;
             margin: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            
-            /* Animation for sliding up */
-            transition: transform 0.5s ease;
+            transition: transform 1s ease;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">MCVB</div>
+        <h1 class="header">MCVB</h1>
         
         <div class="rotating-text-container">
             <p class="rotating-text"></p>
         </div>
-
-        <script>
-            const sentences = [
-                "Maximize collaboration, velocity, and brilliance",
-                "Merging concepts, visualizing builds",
-                "Modernize corporations value-based",
-                "Modernize, coordinate, visualize, build",
-                "Modernizing cooperation through value-based brainstorming"
-            ];
-    
-            let currentIndex = 0;
-            const rotatingElement = document.querySelector('.rotating-text');
-    
-            function rotateSentence() {
-                // Move the current sentence up
-                rotatingElement.style.transform = 'translateY(-100%)';
-                
-                // After the transition, change the sentence and reset position
-                setTimeout(() => {
-                    currentIndex = (currentIndex + 1) % sentences.length;
-                    rotatingElement.style.transition = 'none';
-                    rotatingElement.style.transform = 'translateY(100%)';
-                    rotatingElement.textContent = sentences[currentIndex];
-                    
-                    // Force a reflow
-                    rotatingElement.offsetHeight;
-                    
-                    // Slide up to normal position
-                    rotatingElement.style.transition = 'transform 0.5s ease';
-                    rotatingElement.style.transform = 'translateY(0)';
-                }, 500); // This should match the transition time in CSS
-            }
-    
-            // Initial sentence display
-            rotatingElement.textContent = sentences[currentIndex];
-    
-            // Start rotation after a delay
-            setTimeout(() => {
-                setInterval(rotateSentence, 3000); // Change sentence every 3 seconds
-            }, 3000);
-        </script>
         
         <div class="subtext">
+        </br>
             <p>Email: contact@mcvb.eu</p>
         </div>
         
     </div>
+
+    <script>
+        const sentences = [
+            "Maximize collaboration, velocity, and brilliance",
+            "Merging concepts, visualizing builds",
+            "Modernize corporations value-based",
+            "Modernize, coordinate, visualize, build",
+            "Modernizing cooperation through value-based brainstorming"
+        ];
+
+        let currentIndex = 0;
+        const rotatingElement = document.querySelector('.rotating-text');
+
+        function rotateSentence() {
+            // Move the current sentence up
+            rotatingElement.style.transform = 'translateY(-100%)';
+            
+            // After the transition, change the sentence and reset position
+            setTimeout(() => {
+                currentIndex = (currentIndex + 1) % sentences.length;
+                rotatingElement.style.transition = 'none';
+                rotatingElement.style.transform = 'translateY(100%)';
+                rotatingElement.textContent = sentences[currentIndex];
+                
+                // Force a reflow
+                rotatingElement.offsetHeight;
+                
+                // Slide up to normal position
+                rotatingElement.style.transition = 'transform 0.5s ease';
+                rotatingElement.style.transform = 'translateY(0)';
+            }, 1000); // This should match the transition time in CSS
+        }
+
+        // Initial sentence display
+        rotatingElement.textContent = sentences[currentIndex];
+
+        // Start rotation after a delay
+        setTimeout(() => {
+            setInterval(rotateSentence, 4000); // Change sentence every 3 seconds
+        }, 1000);
+    </script>
+
 </body>
 </html>
