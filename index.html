@@ -19,7 +19,7 @@
         .container {
             text-align: center;
         }
-        .logo {
+        .header {
             font-size: 48px;
             font-weight: bold;
             color: #9932CC;
@@ -28,13 +28,34 @@
             margin-top: 20px;
             font-size: 18px;
         }
+        .rotating-text-container {
+            height: 30px; /* Adjust based on your font size */
+            overflow: hidden;
+            position: relative;
+        }
+        .rotating-text {
+            font-size: 24px;
+            font-weight: bold;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            line-height: 30px; /* Should match container height */
+            text-align: center;
+            
+            /* Animation for sliding up */
+            transition: transform 0.5s ease;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="logo">MCVB</div>
+        <div class="header">MCVB</div>
         
-        <div id="rotating-text"></div>
+        <div class="rotating-text-container">
+            <p class="rotating-text"></p>
+        </div>
+
         <script>
             const texts = [
                 "Maximize collaboration, velocity, and brilliance",
@@ -43,14 +64,38 @@
                 "Modernize, coordinate, visualize, build",
                 "Modernizing cooperation through value-based brainstorming"
             ];
+    
             let currentIndex = 0;
-            const rotatingElement = document.getElementById('rotating-text');
+            const rotatingElement = document.querySelector('.rotating-text');
+            const container = document.querySelector('.rotating-text-container');
+    
             function rotateText() {
-                rotatingElement.textContent = texts[currentIndex];
-                currentIndex = (currentIndex + 1) % texts.length;
+                // Move the current text up
+                rotatingElement.style.transform = 'translateY(-100%)';
+                
+                // After the transition, change the text and reset position
+                setTimeout(() => {
+                    currentIndex = (currentIndex + 1) % texts.length;
+                    rotatingElement.style.transition = 'none';
+                    rotatingElement.style.transform = 'translateY(100%)';
+                    rotatingElement.textContent = texts[currentIndex];
+                    
+                    // Force a reflow
+                    rotatingElement.offsetHeight;
+                    
+                    // Slide up to normal position
+                    rotatingElement.style.transition = 'transform 0.5s ease';
+                    rotatingElement.style.transform = 'translateY(0)';
+                }, 500); // This should match the transition time in CSS
             }
-            rotateText(); // Initial text display
-            setInterval(rotateText, 3000); // Change text every 3 seconds
+    
+            // Initial text display
+            rotatingElement.textContent = texts[currentIndex];
+    
+            // Start rotation after a delay
+            setTimeout(() => {
+                setInterval(rotateText, 3000); // Change text every 3 seconds
+            }, 3000);
         </script>
         
         <div class="subtext">
