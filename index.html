@@ -33,15 +33,30 @@
 <body>
     <div class="container">
         <div class="logo">MCVB</div>
+        
+        <div id="rotating-text"></div>
+        <script>
+            const texts = [
+                "Maximize collaboration, velocity, and brilliance",
+                "Merging concepts, visualizing builds",
+                "Modernize corporations value-based",
+                "Modernize, coordinate, visualize, build",
+                "Modernizing cooperation through value-based brainstorming"
+            ];
+            let currentIndex = 0;
+            const rotatingElement = document.getElementById('rotating-text');
+            function rotateText() {
+                rotatingElement.textContent = texts[currentIndex];
+                currentIndex = (currentIndex + 1) % texts.length;
+            }
+            rotateText(); // Initial text display
+            setInterval(rotateText, 3000); // Change text every 3 seconds
+        </script>
+        
         <div class="subtext">
-            <p>Maximize collaboration, velocity, and brilliance</p>
-            <p>Merging concepts, visualizing builds</p>
-            <p>Modernize corporations value-based</p>
-            <p>Modernize, coordinate, visualize, build</p>
-            <p>Modernizing cooperation through value-based brainstorming</p>
-            <br>
             <p>Contact me at contact@mcvb.eu</p>
         </div>
+        
     </div>
 </body>
 </html>
