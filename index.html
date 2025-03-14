@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MCVB</title>
     <style>
+        <link rel="stylesheet" type="text/css"
+            href="https://esm.sh/emfed@1/toots.css">
         body {
             font-family: Arial, sans-serif;
             background-color: #1a1a1a;
@@ -17,10 +19,19 @@
             height: 100vh;
         }
         .container {
-            text-align: center;
-            width: 80%;
-            max-width: 1200px;
-            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            position: relative;
+        }
+       .mastodon-container {
+            width: 100%;
+            overflow: visible;
+        }
+        .emfed-timeline {
+            margin-top: 20px !important;
+            position: relative !important;
+            z-index: 5 !important;
         }
         .header {
             font-size: 36px;
@@ -67,27 +78,27 @@
             }
         }
     </style>
-    <link rel="stylesheet" type="text/css"
-      href="https://esm.sh/emfed@1/toots.css">
 </head>
 <body>
     <div class="container">
         <h1 class="header">MCVB</h1>
         
-        <div class="rotating-text-container">
+        <div class="rotating-text-container" style="position: relative; z-index: 10; margin-bottom: 50px;">
             <p class="rotating-text"></p>
         </div>
 
-        <div class="mastodon-container" style="margin-top: 100px; position: relative; z-index: 1;">
+        <div class="mastodon-container" style="position: relative; z-index: 5; margin-top: 150px; clear: both;">
+            <h2>Find me on Mastodon</h2>
             <a class="mastodon-feed"
             href="https://chaos.social/@mbreuk"
-            data-toot-limit="3"
+            data-toot-limit="6"
             data-exclude-replies="true"
             data-exclude-reblogs="true"
             >follow me into the Fediverse</a>
+            <a rel="me" href="https://chaos.social/@mbreuk">Mastodon</a>
         </div>
         
-        <div class="subtext" style="margin-top: 20px;">
+        <div class="subtext" style="margin-top: 30px;">
             <p>Email: contact@mcvb.eu</p>
         </div>
         
