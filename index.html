@@ -75,6 +75,13 @@
         <div class="rotating-text-container">
             <p class="rotating-text"></p>
         </div>
+
+        <div>
+            <a class="mastodon-feed"
+            href="https://chaos.social/@mbreuk"
+            data-toot-limit="6"
+            >follow me into the Fediverse</a>
+        </div>
         
         <div class="subtext">
         </br>
@@ -124,6 +131,8 @@
             setInterval(rotateSentence, 4000); // Change sentence every 3 seconds
         }, 1000);
     </script>
+
+    <script type="module" src="https://esm.sh/emfed@1"></script>
 
 </body>
 </html>
